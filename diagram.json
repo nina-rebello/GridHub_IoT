@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "author": "Nina Rebello Francisco",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 48, "left": 43.24, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -116.5, "left": 105.4, "attrs": {} },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": 99.2, "left": -220, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -124.5, "left": -24.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:VCC", "esp:5V", "red", [ "h28.8", "v96" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h19.2", "v76.4" ] ],
+    [ "ldr1:AO", "esp:VP", "green", [ "h48", "v-48.7" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v28.8", "h-106.4", "v96" ] ],
+    [ "pot1:SIG", "esp:35", "green", [ "h-0.4", "v57.6", "h-124", "v115.2" ] ],
+    [ "pot1:GND", "esp:GND.2", "black", [ "v124.8", "h9.6" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v38.4", "h105.6", "v163.2" ] ],
+    [ "dht1:GND", "esp:GND.3", "black", [ "h134.4", "v144" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "h9.7", "v288", "h144", "v-86.4" ] ]
+  ],
+  "dependencies": {}
+}
