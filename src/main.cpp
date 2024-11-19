@@ -10,11 +10,11 @@ const int potPin = 35;   // Pino analógico do Potenciômetro
 const int dhtPin = 4;    // Pino do sensor DHT (Temperatura e Umidade)
 
 // Configurações de WiFi
-const char* ssid = "Wokwi-GUEST";         // rede WiFi
-const char* password = "";                // senha do WiFi
+const char* ssid = "Wokwi-GUEST";         // Substitua pelo nome da sua rede WiFi
+const char* password = "";                // Substitua pela senha do WiFi
 
 // Configurações do Thinger.io
-#define USERNAME "nina-rebello"           // nome de usuário na plataforma thinger.io
+#define USERNAME "nina-rebello"           // Seu nome de usuário na plataforma thinger.io
 #define DEVICE_ID "weather_station"       // Device ID criado na plataforma
 #define DEVICE_CREDENTIAL "fiap24"        // Credencial do device criada na plataforma
 ThingerESP32 thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL);
@@ -33,7 +33,7 @@ WiFiClient espClient;
 PubSubClient MQTT(espClient);
 
 // Configuração do Sensor DHT
-#define DHT_TYPE DHT22 
+#define DHT_TYPE DHT22  // Ou DHT11, se você estiver usando o DHT11
 DHT dht(dhtPin, DHT_TYPE);  // Inicializa o sensor DHT
 
 // Função: inicializa parâmetros de conexão MQTT
@@ -81,8 +81,7 @@ String classificaIntensidadeLuz(int ldrValue) {
 // Função: envia dados ao Broker MQTT em formato JSON
 void enviaEstadoOutputMQTT(int ldrValue, float windSpeed, float temperature, float humidity) {
   // Cria um objeto JSON
-  DynamicJsonDocument jsonDoc(256);
-
+  StaticJsonDocument<256> jsonDoc;
   jsonDoc["Luz"] = classificaIntensidadeLuz(ldrValue);
   jsonDoc["Vento"] = windSpeed;
   jsonDoc["Temperatura"] = temperature;
@@ -124,45 +123,53 @@ void setup() {
   dht.begin();
   delay(2000); // Aguarda o sensor estabilizar
 
-  // Recursos do Thinger.io
-    thing["light_level"] = [](pson &in, pson &out) {
-        int ldrValue = analogRead(ldrPin);
-        out["value"] = classificaIntensidadeLuz(ldrValue);
-    };
+  // Configurar recursos no Thinger.io
+  thing["light_level"] >> [](pson & out){
+    int ldrValue = analogRead(ldrPin);
+    out["value"] = classificaIntensidadeLuz(ldrValue);
+  };
 
-    thing["wind_speed"] = [](pson &in, pson &out) {
-        int potValue = analogRead(potPin);
-        float windSpeed = map(potValue, 0, 4095, 0, 100);
-        out["value"] = windSpeed;
-    };
+  thing["wind_speed"] >> [](pson & out){
+    int potValue = analogRead(potPin);
+    float velocidadeVento = map(potValue, 0, 4095, 0, 100);
+    out["value"] = velocidadeVento;
+  };
 
-    thing["temperature"] = [](pson &in, pson &out) {
-        float temperature = dht.readTemperature();
-        out["value"] = temperature;
-    };
+  thing["temperature"] >> [](pson & out){
+    float temperature = dht.readTemperature();
+    out["value"] = temperature;
+  };
 
-    thing["humidity"] = [](pson &in, pson &out) {
-        float humidity = dht.readHumidity();
-        out["value"] = humidity;
-    };
+  thing["humidity"] >> [](pson & out){
+    float humidity = dht.readHumidity();
+    out["value"] = humidity;
+  };
 
-    // Envio para bucket
-    thing["send_to_bucket"] = [](pson &in, pson &out) {
-        pson data;
-        int ldrValue = analogRead(ldrPin);
-        data["Luz"] = classificaIntensidadeLuz(ldrValue);
-        data["Temperatura"] = dht.readTemperature();
-        data["Umidade"] = dht.readHumidity();
-        data["Velocidade do Vento"] = map(analogRead(potPin), 0, 4095, 0, 100);
+  // Configurar envio ao bucket no Thinger.io
+thing["send_to_bucket"] >> [](pson & out) {
+  // Leitura dos sensores
+  int ldrValue = analogRead(ldrPin);
+  int potValue = analogRead(potPin);
+  float temperature = dht.readTemperature();
+  float humidity = dht.readHumidity();
 
-        thing.write_bucket("weather_station_data", data);
-        out = data;  // Opcionalmente, enviar o mesmo conjunto de dados na resposta
-    };
+  // Velocidade do vento
+  float windSpeed = map(potValue, 0, 4095, 0, 100);
+
+  // Adicionar dados ao objeto 'out' para envio
+  out["Luz"] = classificaIntensidadeLuz(ldrValue);
+  out["Vento"] = windSpeed;
+  out["Temperatura"] = temperature;
+  out["Umidade"] = humidity;
+};
+
 }
 
 void loop() {
   thing.handle(); // Mantém a conexão com o Thinger.io
   verificaConexoesWiFiEMQTT(); // Garante que WiFi e MQTT estejam conectados
+  thing.call_endpoint("send_to_bucket");
+
 
   // Leitura dos sensores
   int ldrValue = analogRead(ldrPin);
