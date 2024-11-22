@@ -24,6 +24,7 @@ Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dad
   
 # Repositories
 
+- [Documentação completa e visão geral](https://github.com/nina-rebello/GridHub/blob/main/README.md)
 - [IoT Application](https://github.com/nina-rebello/GridHub_IoT)
 - [Backend](https://github.com/Santlago/apigridhub)
 - [Frontend](https://github.com/Santlago/webgridhub)
