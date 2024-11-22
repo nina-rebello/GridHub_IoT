@@ -8,6 +8,29 @@
 ## Descrição
 Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dados ambientais de sensores (como luz, temperatura, umidade e velocidade do vento) e integrá-los a plataformas de gerenciamento e visualização de dados. Através de uma conexão Wi-Fi, o ESP32 envia os dados coletados para o Thinger.io e para um broker MQTT simultaneamente, permitindo tanto o armazenamento quanto a análise em tempo real.
 
+---
+# Equipe
+
+- Breno Lemes Santiago - https://github.com/Santlago
+- Felipe Guedes Gonçalves - https://github.com/FelipeGuedesGoncalves
+- Luiz Felipe Soares de Sousa Lucena - https://github.com/LuizLucena97
+- Nina Rebello Francisco - https://github.com/nina-rebello
+- Vitória Maria de Camargo - https://github.com/VitoriaMdeCamargo
+
+# Vídeos demonstrativos e Pitch
+- [Java Application]()
+- [IoT Application](https://youtu.be/LpBOj-QvhHc)
+- [Pitch](https://youtu.be/tdruTbBAiNg)
+  
+# Repositories
+
+- [IoT Application](https://github.com/nina-rebello/GridHub_IoT)
+- [Backend](https://github.com/Santlago/apigridhub)
+- [Frontend](https://github.com/Santlago/webgridhub)
+- [Mobile](https://github.com/FelipeGuedesGoncalves/GridHubMobile)
+- [C#](https://github.com/LuizLucena97/GridHub)
+
+---
 ## Funcionalidades
 - **Coleta de Dados Ambientais**:  
    O ESP32 está conectado a sensores de luz (LDR), umidade, temperatura (DHT22) e velocidade do vento (potenciômetro simulando anemômetro).
