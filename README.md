@@ -18,8 +18,8 @@ Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dad
 - Vitória Maria de Camargo - https://github.com/VitoriaMdeCamargo
 
 # Vídeos demonstrativos e Pitch
-- [Java Application]()
-- [IoT Application](https://youtu.be/LpBOj-QvhHc)
+- [Java Application - Video]()
+- [IoT Application - Video](https://youtu.be/LpBOj-QvhHc)
 - [Pitch](https://youtu.be/tdruTbBAiNg)
   
 # Repositórios
