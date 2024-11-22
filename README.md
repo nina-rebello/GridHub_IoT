@@ -12,7 +12,18 @@ Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dad
    - Armazenamento no **Data Bucket do Thinger.io**, onde as informações são organizadas e mantidas para análises históricas e consulta pelo backend.  
 
 - **Publicação MQTT**:  
-   - Simultaneamente, os dados são enviados para um broker MQTT. Isso facilita a integração com outras aplicações, como o **Node-RED**, para processamento adicional ou automações.  
+   - Simultaneamente, os dados são enviados para um broker MQTT. Isso facilita a integração com outras aplicações, como o **Node-RED**, para processamento adicional ou automações.
+
+## Fluxo Node-Red
+<div>
+   <img src="https://drive.google.com/uc?export=view&id=1i0nk37Y2NWWdG41w3pe7xwrtT7TEo75z" alt="Logo">
+</div>
+
+## Thinger.io
+<div>
+   <img src="https://drive.google.com/uc?export=view&id=1i0nk37Y2NWWdG41w3pe7xwrtT7TEo75z" alt="Logo">
+</div>
+
 
 ### **Ferramentas Utilizadas**  
 - **Wokwi**: Simulador online para prototipação do ESP32 e seus sensores.  
