@@ -20,8 +20,15 @@ Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dad
 </div>
 
 ## Thinger.io
+
 <div>
-   <img src="https://drive.google.com/uc?export=view&id=1i0nk37Y2NWWdG41w3pe7xwrtT7TEo75z" alt="Logo">
+   <img src="https://drive.google.com/uc?export=view&id=1En6weEEk_0cD4ii4GezwfHO-fgL5vulO" alt="Logo">
+</div>
+<div>
+   <img src="https://drive.google.com/uc?export=view&id=1qcdABsogtgC89AGctL8UqGVGHWR9HvTt" alt="Logo">
+</div>
+<div>
+   <img src="https://drive.google.com/uc?export=view&id=1l_1Ri75vumsGlDHfDXJy76wupTEbgoS8" alt="Logo">
 </div>
 
 
