@@ -5,7 +5,34 @@ Este projeto tem como objetivo configurar um ESP32 para realizar a coleta de dad
 
 ## Funcionalidades
 - **Coleta de Dados Ambientais**:  
-   O ESP32 está conectado a sensores de luz (LDR), umidade, temperatura (DHT22) e velocidade do vento (potenciômetro simulando anemômetro).  
+   O ESP32 está conectado a sensores de luz (LDR), umidade, temperatura (DHT22) e velocidade do vento (potenciômetro simulando anemômetro).
+
+  **Sistema**
+<div align="center">
+   <img src="https://drive.google.com/uc?export=view&id=1TbAcZS_f-vIXl4FefTg_Yn-E_O_fa4ns" alt="Logo" width="350">
+   <br><br>
+</div>
+
+**Componentes**
+- Sensor de luz (LDR)
+<div align="center">
+   <img src="https://drive.google.com/uc?export=view&id=1-4SrtR9lkoZwFt3DnvRr0mO54_XAn_ac" alt="Logo" width="300">
+   <br><br>
+</div>
+
+- Sensor de umidade e temperatura (DHT22)
+<div align="center">
+   <img src="https://drive.google.com/uc?export=view&id=1S5_uo-2s0s412tqCNWGFrLoD9pkEI99W" alt="Logo" width="150">
+   <br><br>
+</div>
+
+- Sensor de velocidade do vento (potenciômetro simulando anemômetro)
+<div align="center">
+   <img src="https://drive.google.com/uc?export=view&id=1yA9lHiqf1-NK0_4WWWnWVNAlkPYRpf2o" alt="Logo" width="150">
+   <br><br>
+</div>
+
+  
 
 - **Envio de Dados ao Thinger.io**:  
    - Os dados são integrados ao **Thinger.io Dashboard**, permitindo a visualização em tempo real através de gráficos interativos e widgets.  
